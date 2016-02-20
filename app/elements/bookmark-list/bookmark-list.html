@@ -1,0 +1,43 @@
+<!--
+@license
+Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../bookmark-card/bookmark-card.html">
+
+<dom-module id="bookmark-list">
+    <template>
+        <style>
+            :host {
+                display: block;
+                max-width: 920px;
+                margin: 0 auto;
+                padding: 0 10px 20px 10px;
+            }
+        </style>
+        <iron-ajax
+                auto
+                url="/api/bookmarks"
+                handle-as="json"
+                last-response="{{bookmarksResponse}}">
+        </iron-ajax>
+        <template is="dom-repeat" items="{{bookmarksResponse.data}}">
+            <bookmark-card bookmark="{{item}}"></bookmark-card>
+        </template>
+    </template>
+    <script>
+        (function() {
+            'use strict';
+
+            Polymer({
+                is: 'bookmark-list'
+            });
+        })();
+    </script>
+</dom-module>
