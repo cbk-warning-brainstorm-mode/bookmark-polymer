@@ -40,14 +40,18 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 background: #F0F0F0;
             }
 
-            .card-actions {
-                min-height: 0px;
+            .card-content .options {
+                float: right;
             }
         </style>
         <paper-card>
             <div class="card-content">
+                <div class="options">
+                    <paper-icon-button icon="create"></paper-icon-button>
+                    <paper-icon-button icon="delete"></paper-icon-button>
+                </div>
                 <h2>{{bookmark.nome}}</h2>
-                <small><a href="{{bookmark.link}}">{{bookmark.link}}</a></small>
+                <small><a target="_blank" href="http://{{bookmark.link}}">{{bookmark.link}}</a></small>
             </div>
             <template is="dom-if" if="{{showTags(bookmark)}}">
                 <div class="card-actions">
